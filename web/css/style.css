@@ -1,0 +1,72 @@
+#safeProbe { position: fixed; top: 0; left: 0; width: 0; height: 0; pointer-events: none;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --bg: #0b0d18;
+  --ink: #f2f0ff;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden;
+  background: var(--bg); color: var(--ink);
+  font: 15px/1.35 -apple-system, system-ui, "SF Pro Text", sans-serif;
+  -webkit-user-select: none; user-select: none;
+  overscroll-behavior: none; touch-action: manipulation;
+}
+.screen { position: fixed; inset: 0; display: none; flex-direction: column; }
+.screen.active { display: flex; }
+
+/* home */
+#home { padding: calc(var(--sat) + 24px) 18px calc(var(--sab) + 18px); gap: 14px; }
+.brand h1 { margin: 0; font-size: 34px; letter-spacing: 6px; font-weight: 800;
+  background: linear-gradient(90deg, #ff6a35, #a760ff 55%, #2f9dff);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.brand p { margin: 6px 0 0; color: #9c9ab8; font-size: 13px; }
+.heroList { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 8px; }
+.hero { text-align: left; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 11px 13px; color: var(--ink); font: inherit; }
+.hero.sel { background: rgba(167,96,255,0.18); border-color: rgba(167,96,255,0.65); }
+.heroTop { display: flex; align-items: center; justify-content: space-between; }
+.heroName { font-weight: 700; font-size: 16px; }
+.dots i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-left: 4px; }
+.heroTitle { color: #9c9ab8; font-size: 12px; }
+.heroPassive { margin-top: 5px; font-size: 12px; color: #c9c6e6; }
+
+.row { display: flex; gap: 8px; }
+.row button { flex: 1; padding: 13px; border-radius: 13px; border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06); color: var(--ink); font: 600 15px -apple-system, system-ui, sans-serif; }
+.row button.sel { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.35); }
+button.primary { background: linear-gradient(135deg, #ff6a35, #a760ff); border: none; font-weight: 800; }
+button.secondary { background: rgba(255,255,255,0.08); }
+
+/* loadout */
+#loadout { padding-top: var(--sat); }
+.bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; font-weight: 700; }
+.bar .icon { width: 40px; height: 36px; border-radius: 10px; border: none; background: rgba(255,255,255,0.08); color: var(--ink); font-size: 19px; }
+.warn { display: none; margin: 0 14px 8px; padding: 9px 12px; border-radius: 10px;
+  background: rgba(255,92,110,0.16); color: #ff9aa6; font-size: 12.5px; }
+.warn.show { display: block; }
+.scroll { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 14px calc(var(--sab) + 24px); }
+.tierHead { display: flex; justify-content: space-between; text-transform: uppercase;
+  letter-spacing: 1.6px; font-size: 11px; color: #8d8bae; margin: 14px 2px 7px; }
+.spellGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.spell { position: relative; text-align: left; padding: 9px 10px 9px 26px; border-radius: 12px; color: var(--ink);
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); font: inherit; }
+.spell.on { background: color-mix(in srgb, var(--el) 26%, transparent); border-color: var(--el); }
+.spell .role { position: absolute; left: 9px; top: 12px; width: 10px; height: 10px; background: var(--el); }
+.role-strike { clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
+.role-ward { clip-path: polygon(50% 0, 100% 22%, 100% 62%, 50% 100%, 0 62%, 0 22%); }
+.role-mend { clip-path: polygon(36% 0, 64% 0, 64% 36%, 100% 36%, 100% 64%, 64% 64%, 64% 100%, 36% 100%, 36% 64%, 0 64%, 0 36%, 36% 36%); }
+.sName { display: block; font-weight: 650; font-size: 13px; }
+.sMeta { display: block; font-size: 10.5px; color: #9c9ab8; margin-top: 2px; }
+
+/* battle */
+#gameCanvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; }
+.quit { position: absolute; right: 12px; top: calc(var(--sat) + 8px); width: 32px; height: 32px;
+  border-radius: 16px; border: none; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; }
+.overlay { position: absolute; left: 0; right: 0; bottom: calc(var(--sab) + 34px);
+  display: none; gap: 10px; padding: 0 22px; }
+.overlay.show { display: flex; }
+.overlay button { flex: 1; padding: 15px; border-radius: 14px; border: none; color: var(--ink);
+  font: 700 16px -apple-system, system-ui, sans-serif; }

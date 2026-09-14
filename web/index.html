@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RuneChain</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0b0d18">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="safeProbe" aria-hidden="true"></div>
+
+<section id="home" class="screen active">
+  <header class="brand">
+    <h1>RUNECHAIN</h1>
+    <p>Touch an anchor. Drag through its element. Release to cast — and watch their board.</p>
+  </header>
+  <div id="heroList" class="heroList"></div>
+  <div class="row" id="diffRow">
+    <button data-diff="easy">Easy</button>
+    <button data-diff="normal">Normal</button>
+    <button data-diff="hard">Hard</button>
+  </div>
+  <div class="row">
+    <button id="loadoutBtn" class="secondary">Loadout</button>
+    <button id="playBtn" class="primary">Duel</button>
+  </div>
+</section>
+
+<section id="loadout" class="screen">
+  <header class="bar">
+    <button id="loadoutBack" class="icon">‹</button>
+    <span id="loadoutHero"></span>
+    <button id="loadoutReset" class="icon">↺</button>
+  </header>
+  <div id="loadoutWarn" class="warn"></div>
+  <div id="loadoutBody" class="scroll"></div>
+</section>
+
+<section id="battle" class="screen">
+  <canvas id="gameCanvas"></canvas>
+  <button id="quitBtn" class="quit">✕</button>
+  <div id="battleOverlay" class="overlay">
+    <button id="againBtn" class="primary">Rematch</button>
+    <button id="homeBtn" class="secondary">Home</button>
+  </div>
+</section>
+
+<script src="js/data.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/render.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
