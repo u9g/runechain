@@ -5,6 +5,9 @@ A real-time 1v1 chain-casting duel, built to the spec in
 The game is a browser app sized for a phone; the iOS app is a thin Swift wrapper
 around it.
 
+**Play it: https://u9g.github.io/runechain/** — open it on a phone, or in a
+desktop browser's device toolbar. It is portrait-only and touch-first.
+
 ```
 web/     the game — vanilla JS, one canvas, no build step
 ios/     WKWebView wrapper (xcodegen + SwiftUI)

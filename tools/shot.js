@@ -16,7 +16,7 @@ require('fs').mkdirSync(OUT, { recursive: true });
   page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
   page.on('pageerror', e => errs.push('pageerror: ' + e.message));
 
-  await page.goto('http://localhost:8731/index.html', { waitUntil: 'load' });
+  await page.goto(process.env.URL || 'http://localhost:8731/index.html', { waitUntil: 'load' });
   if (process.env.INSETS) {
     // Stand in for a notched device: env() does not resolve in desktop Chrome.
     await page.addStyleTag({ content: '#safeProbe{padding-top:59px;padding-bottom:34px} :root{--sat:59px;--sab:34px}' });
