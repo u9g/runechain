@@ -20,21 +20,21 @@ const TUTORIAL_STEPS = [
     body: 'Five elements, each with its own colour and its own rune — Ember, Tide, Stone, Bloom, Aether. You read the rune, not just the colour.',
   },
   {
-    id: 'anchor', focus: 'board', advance: 'gate', allowSpell: 'ember_strike_1',
+    id: 'anchor', focus: ['board', 'selfBar'], advance: 'gate', allowSpell: 'ember_strike_1',
     title: 'Gold frames are spell anchors',
     body: 'An anchor is a spell sitting on your board. Touch the framed Ember tile and hold.',
     rig: RIG_STRIKE,
     check: (t) => t.me.drag && t.me.drag.path.length >= 1,
   },
   {
-    id: 'drag', focus: 'board', advance: 'gate', allowSpell: 'ember_strike_1',
+    id: 'drag', focus: ['board', 'selfBar'], advance: 'gate', allowSpell: 'ember_strike_1',
     title: 'Drag to link its element',
     body: 'Keep your finger down and drag through touching Ember runes. Watch the readout above the board name the spell and its power as the chain grows.',
     check: (t) => t.me.drag && t.me.drag.path.length >= 4,
     keep: true,
   },
   {
-    id: 'release', focus: 'selfBar', advance: 'gate', allowSpell: 'ember_strike_1',
+    id: 'release', focus: ['board', 'selfBar'], advance: 'gate', allowSpell: 'ember_strike_1',
     title: 'Lift your finger to cast',
     body: 'The anchor chose which spell. The chain chose how strong. One gesture, two decisions.',
     check: (t) => t.castsMade >= 1,
@@ -53,7 +53,7 @@ const TUTORIAL_STEPS = [
     body: 'Top left is a live copy of your opponent’s board. Watch — the construct is drawing a chain right now, and you can count the runes it links before it casts.',
   },
   {
-    id: 'ward', focus: 'board', advance: 'gate', allowSpell: 'stone_ward_1',
+    id: 'ward', focus: ['board', 'selfBar'], advance: 'gate', allowSpell: 'stone_ward_1',
     title: 'A ward only has to exist on impact',
     body: 'That strike is coming. Chain the framed Stone tile and cast your ward before it lands — defence is allowed to be late, but not too late. The construct will keep striking until you absorb one.',
     rig: RIG_WARD,

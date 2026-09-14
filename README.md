@@ -24,6 +24,7 @@ cd web && python3 -m http.server 8731     # then open http://localhost:8731
 node tools/test.js                        # 19 rule tests over the [LOCKED] mechanics
 node tools/sim.js 300                     # AI-vs-AI balance probe
 node tools/tutorial-check.js              # asserts the ward lesson cannot be faked
+node tools/spotlight-check.js             # asserts each step lights its own region
 node tools/shot.js                        # iPhone-viewport screenshots into shots/
 ```
 

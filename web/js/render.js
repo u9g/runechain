@@ -1,12 +1,17 @@
 // Canvas renderer for the battle screen. Portrait, thumb-first, engraved.
-function roundRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
+/** Appends a rounded rect to the current path. */
+function roundRectPath(ctx, x, y, w, h, r) {
   ctx.moveTo(x + r, y);
   ctx.arcTo(x + w, y, x + w, y + h, r);
   ctx.arcTo(x + w, y + h, x, y + h, r);
   ctx.arcTo(x, y + h, x, y, r);
   ctx.arcTo(x, y, x + w, y, r);
   ctx.closePath();
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  roundRectPath(ctx, x, y, w, h, r);
 }
 
 class Renderer {
@@ -521,18 +526,18 @@ class Renderer {
   drawFocus(t) {
     if (!this.focus) return;
     const ctx = this.ctx;
-    const r = this.focusRect(this.focus);
-    if (!r) return;
+    const names = Array.isArray(this.focus) ? this.focus : [this.focus];
+    const rects = names.map(n => this.focusRect(n)).filter(Boolean);
+    if (!rects.length) return;
     ctx.save();
     ctx.beginPath();
     ctx.rect(0, 0, this.W, this.H);
-    roundRect(ctx, r.x, r.y, r.w, r.h, 16);
-    ctx.fillStyle = 'rgba(6,7,14,0.72)';
+    for (const r of rects) roundRectPath(ctx, r.x, r.y, r.w, r.h, 16);
+    ctx.fillStyle = 'rgba(6,7,14,0.6)';
     ctx.fill('evenodd');
-    roundRect(ctx, r.x, r.y, r.w, r.h, 16);
     ctx.strokeStyle = `rgba(201,162,39,${0.35 + 0.2 * Math.sin(t * 3)})`;
     ctx.lineWidth = 1.5;
-    ctx.stroke();
+    for (const r of rects) { roundRect(ctx, r.x, r.y, r.w, r.h, 16); ctx.stroke(); }
     ctx.restore();
   }
 
