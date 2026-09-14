@@ -16,6 +16,9 @@ require('fs').mkdirSync(OUT, { recursive: true });
   page.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
   page.on('pageerror', e => errs.push('pageerror: ' + e.message));
 
+  // returning player: skip the first-run tutorial
+  await page.evaluateOnNewDocument(() => localStorage.setItem('runechain.save',
+    JSON.stringify({ heroId: 'vesk', difficulty: 'normal', tutorialDone: true, loadouts: {} })));
   await page.goto(process.env.URL || 'http://localhost:8731/index.html', { waitUntil: 'load' });
   if (process.env.INSETS) {
     // Stand in for a notched device: env() does not resolve in desktop Chrome.

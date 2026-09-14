@@ -15,26 +15,36 @@
 
 <section id="home" class="screen active">
   <header class="brand">
-    <h1>RUNECHAIN</h1>
-    <p>Touch an anchor. Drag through its element. Release to cast — and watch their board.</p>
+    <span class="kicker">A duel of chains</span>
+    <h1>RuneChain</h1>
+    <p>Touch an anchor. Drag through its element. Release to cast — and read the board they cannot hide.</p>
   </header>
+
+  <div class="sectionLabel"><span>Choose your hero</span></div>
   <div id="heroList" class="heroList"></div>
-  <div class="row" id="diffRow">
-    <button data-diff="easy">Easy</button>
-    <button data-diff="normal">Normal</button>
-    <button data-diff="hard">Hard</button>
+
+  <div class="sectionLabel"><span>Opponent skill</span></div>
+  <div class="row seg" id="diffRow">
+    <button data-diff="easy">Apprentice</button>
+    <button data-diff="normal">Adept</button>
+    <button data-diff="hard">Archmage</button>
   </div>
+
   <div class="row">
+    <button id="tutorialBtn" class="ghost">Tutorial</button>
     <button id="loadoutBtn" class="secondary">Loadout</button>
-    <button id="playBtn" class="primary">Duel</button>
   </div>
+  <button id="playBtn" class="primary wide">Begin duel</button>
 </section>
 
 <section id="loadout" class="screen">
   <header class="bar">
     <button id="loadoutBack" class="icon">‹</button>
-    <span id="loadoutHero"></span>
-    <button id="loadoutReset" class="icon">↺</button>
+    <div class="barTitle">
+      <span id="loadoutHero"></span>
+      <span class="barSub">Four spells per tier · only these can appear as anchors</span>
+    </div>
+    <button id="loadoutReset" class="icon" title="Reset to default">↺</button>
   </header>
   <div id="loadoutWarn" class="warn"></div>
   <div id="loadoutBody" class="scroll"></div>
@@ -47,11 +57,23 @@
     <button id="againBtn" class="primary">Rematch</button>
     <button id="homeBtn" class="secondary">Home</button>
   </div>
+  <div id="coach" class="coach">
+    <div class="coachHead">
+      <span id="coachStep" class="tag"></span>
+      <button id="coachSkip">Skip</button>
+    </div>
+    <h2 id="coachTitle"></h2>
+    <p id="coachBody"></p>
+    <button id="coachNext" class="primary">Next</button>
+    <div id="coachDo" class="coachDo">Try it</div>
+  </div>
 </section>
 
 <script src="js/data.js"></script>
+<script src="js/theme.js"></script>
 <script src="js/engine.js"></script>
 <script src="js/ai.js"></script>
+<script src="js/tutorial.js"></script>
 <script src="js/render.js"></script>
 <script src="js/app.js"></script>
 </body>

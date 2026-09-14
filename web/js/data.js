@@ -1,8 +1,8 @@
 // RUNECHAIN static catalogue. Colour encodes element, icon shape encodes role.
 const ELEMENTS = {
-  ember:  { name: 'Ember',  color: '#ff6a35', light: '#ffb28a', power: 1.00, speed: 1.00 },
-  tide:   { name: 'Tide',   color: '#2f9dff', light: '#9ed6ff', power: 0.90, speed: 0.80 },
-  stone:  { name: 'Stone',  color: '#f0a81f', light: '#ffdc93', power: 1.15, speed: 1.25 },
+  ember:  { name: 'Ember',  color: '#FF5227', light: '#FFA379', power: 1.00, speed: 1.00 },
+  tide:   { name: 'Tide',   color: '#2B92FF', light: '#9AD4FF', power: 0.90, speed: 0.80 },
+  stone:  { name: 'Stone',  color: '#F0B41C', light: '#FFE09B', power: 1.15, speed: 1.25 },
   bloom:  { name: 'Bloom',  color: '#3fce6e', light: '#a7edbe', power: 1.00, speed: 1.05 },
   aether: { name: 'Aether', color: '#a760ff', light: '#d9bbff', power: 0.95, speed: 0.85 },
 };
